@@ -7,11 +7,6 @@ class Main extends Component {
 
     render() {
 
-        // const list = this.props.todos;
-        // list.map((item) => {
-        //     return <Text>{item.key}</Text>
-        // });
-
         return (
             <View style={{
                 flex: 1,
