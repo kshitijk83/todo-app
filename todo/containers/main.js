@@ -5,6 +5,16 @@ import { setTodo, addTodo } from '../store/actions/todoAction';
 
 class Main extends Component {
 
+    state = {
+        todos: this.props.todos
+    }
+
+    componentDidMount() {
+        this.setState({
+            todos: this.props.todos
+        })
+    }
+
     render() {
 
         return (
@@ -47,15 +57,18 @@ class Main extends Component {
                         </TouchableHighlight>
                     </View>
                 </View>
-
-                <FlatList
-                    data={this.props.todos}
-                    renderItem={({ item }) => {
-                        return <Text>{item.key}</Text>
-                    }}
-
-
-                />
+                <View style={{
+                    flex: .5
+                }}>
+                    <FlatList
+                        data={this.state.todos}
+                        renderItem={({ item }) => {
+                            return <Text>{item.key}</Text>
+                        }}
+                        extraData={this.state}
+                        keyExtractor={(item, index) => item.key}
+                    />
+                </View>
 
             </View>
         )
